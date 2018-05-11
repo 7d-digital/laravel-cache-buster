@@ -9,9 +9,9 @@ if (!function_exists('cache_buster')) {
         }
 
         if (strpos($url, '?') === false) {
-            $url = sprintf('%s?_%s', $url, config('app.cache_buster'));
+            $url = sprintf('%s?_%s', $url, env('CACHE_BUSTER', time() / (60 * 60 * 24)));
         } else {
-            $url = sprintf('%s&_%s', $url, config('cache_buster'));
+            $url = sprintf('%s&_%s', $url, env('CACHE_BUSTER', time() / (60 * 60 * 24)));
         }
         return $url . $anchor;
     }
